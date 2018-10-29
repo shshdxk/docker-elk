@@ -2,7 +2,7 @@
 ## Default Elasticsearch configuration from elasticsearch-docker.
 ## from https://github.com/elastic/elasticsearch-docker/blob/master/build/elasticsearch/elasticsearch.yml
 #
-cluster.name: "docker-cluster"
+cluster.name: "my-application"
 network.host: 0.0.0.0
 
 # minimum_master_nodes need to be explicitly set when bound on a public IP
@@ -14,3 +14,11 @@ discovery.zen.minimum_master_nodes: 1
 ## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
 #
 discovery.type: single-node
+
+#cluster.name: my-application
+#node.name: node-ub2
+#network.host: 0.0.0.0
+#network.publish_host: 192.168.1.138
+#http.port: 9200
+#discovery.zen.ping.unicast.hosts: ["192.168.1.116", "192.168.1.138"]
+#discovery.zen.minimum_master_nodes: 1
