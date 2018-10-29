@@ -10,8 +10,8 @@ services:
     configs:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
-    environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      - source: elastic_data
+        target: /usr/share/elasticsearch/data
     networks:
       - elk
     deploy:
@@ -27,9 +27,11 @@ services:
       - source: logstash_config
         target: /usr/share/logstash/config/logstash.yml
       - source: logstash_pipeline
-        target: /usr/share/logstash/pipeline/logstash.conf
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        target: /usr/share/logstash/pipeline/config/logstash.conf
+      - source: logstash_pipeline_config
+        target: /usr/share/logstash/pipeline
+      - source: logstash_data
+        target: /usr/share/logstash/data
     networks:
       - elk
     deploy:
@@ -53,6 +55,12 @@ configs:
 
   elastic_config:
     file: ./elasticsearch/config/elasticsearch.yml
+  elastic_data:
+    file: - ./elasticsearch/esdata:/usr/share/elasticsearch/data
+  logstash_pipeline_config:
+    file: ./logstash/pipeline
+  logstash_data:
+    file: ./logstash/data
   logstash_config:
     file: ./logstash/config/logstash.yml
   logstash_pipeline:
