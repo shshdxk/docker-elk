@@ -19,13 +19,13 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
-      - ./logstash/pipelines.yml:/usr/share/logstash/pipelines.yml
+      - ./logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
     ports:
       - "5000:5000"
       - "9600:9600"
       - "9601:9601"
-    depends_on:
-      - elasticsearch
+#    depends_on:
+#      - elasticsearch
 
   kibana:
     build:
