@@ -1,0 +1,9 @@
+- pipeline.id: main
+  pipeline.workers: 3
+  pipeline.batch.size: 1
+  queue.type: memory
+  path.config: "/usr/share/logstash/pipeline/logstash.conf"
+
+- pipeline.id: test
+  queue.type: memory
+  config.string: "input { stdin { } } output { stdout { codec => rubydebug } }"

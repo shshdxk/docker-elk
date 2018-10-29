@@ -1,7 +1,3 @@
-ARG ELK_VERSION
-
-# https://github.com/elastic/elasticsearch-docker
-FROM docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
-
-# Add your elasticsearch plugins setup here
-# Example: RUN elasticsearch-plugin install analysis-icu
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+RUN usermod -u 888 elasticsearch && groupmod -g 888 elasticsearch
+USER elasticsearch:elasticsearch
