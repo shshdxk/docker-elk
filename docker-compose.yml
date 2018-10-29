@@ -6,6 +6,7 @@ services:
       args:
         ELK_VERSION: 6.4.0
     volumes:
+      - ./elasticsearch/esdata:/usr/share/elasticsearch/data
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - "9200:9200"
@@ -17,6 +18,7 @@ services:
       args:
         ELK_VERSION: 6.4.0
     volumes:
+      - ./logstash/data:/usr/share/logstash/data
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
       - ./logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
